@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  7dtd-server:
+    volumes:
+      - 7dtd:/backups
+    image: test:latest
+    ports:
+      - 1100:1100
+volumes:
+  7dtd:
+    driver: local
+      
