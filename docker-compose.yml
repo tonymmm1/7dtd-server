@@ -1,13 +1,16 @@
-version: "3"
-
+version: "3.2"
 services:
-  7dtd-server:
-    volumes:
-      - 7dtd:/backups
-    image: test:latest
-    ports:
-      - 1100:1100
-volumes:
   7dtd:
-    driver: local
-      
+    build:
+      context: .
+    image: 7dtd:latest
+    container_name: 7dtd
+    ports:
+      - 2100:2100
+    environment:
+      - instance_name=instance1
+    volumes: 
+      - type: bind
+        source: ./sdtd/data
+        target: /home/sdtd
+    restart: always
